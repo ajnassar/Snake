@@ -1,10 +1,10 @@
 (function(root){
-  Beast = root.Beast = (root.Beast || {})
+  SG = root.SG = (root.SG  || {})
 
-  Snake = Beast.Snake = function(){
+  Snake = SG.Snake = function(board){
     this.dir = "N";
-
-    this.segments = [];
+    var start = [20/2, 20/2]
+    this.segments = [start];
   };
 
   Snake.prototype.move = function(){
@@ -15,16 +15,21 @@
 
   };
 
-  Coord = Beast.Coord = function(){};
+  Coord = SG.Coord = function(){};
 
 
-  Board = Beast.Board = function(){
+  Board = SG.Board = function(dimension){
     this.snake = new Snake(this);
+    this.dimension = dimension;
+    this.grid = []
 
+    for(var i = 0; i < dimension; i++){
+      this.grid.push([]);
+      for(var j = 0; j < dimension; j++){
+        this.grid[i].push("");
+      }
+    }
   };
 
-  Board.prototype.render = function(){
-
-  };
 
 })(this);
